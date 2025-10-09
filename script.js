@@ -1,0 +1,1 @@
+if (location.pathname == '/') location.pathname = '/index.html';
