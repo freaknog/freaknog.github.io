@@ -40,11 +40,16 @@ h1 {
   justify-content: center;
 }
 
-img {
+body.images img {
   margin-bottom: 16px;
 }
 
 iframe {
   width: 480px;
   height: 360px;
+}
+
+.al {
+  border-left: 8px solid #aaa8;
+  padding-left: 16px;
 }
