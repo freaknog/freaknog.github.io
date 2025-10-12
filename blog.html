@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>blog ~i29 &#x1F62D;</title>
+  <script>
+    localStorage.blogcheck = Date.now();
+    document.addEventListener('DOMContentLoaded', () => fetch('/blog/blog.json').then(e => e.json()).then(e => {
+      if (location.hash) e = e.filter(x => location.hash == '#' + x.id);
+      document.querySelector('#feed').innerHTML =
+        e.sort((a, b) => Number(b.time) - Number(a.time)).map(x =>
+          `<details><summary>${x.title}
+        <img src="/ass/link.png" width="30" onclick="c('${x.id}', this)" class="link">
+        <div class="tiny">${new Date(Number(x.time)).toString()
+            .replace(/^... /, '').replace(/ GMT.*$/, '')}</div>
+      </summary>
+        <div>${x.content}</div>
+      </details>`).join('');
+      if (location.hash) document.querySelector('details').open = true;
+    }));
+
+    function c(x, e) {
+      navigator.clipboard.writeText(location.origin + '/blog.html#' + encodeURIComponent(x));
+      e = e.parentElement.parentElement;
+      e.open = !e.open;
+    }
+  </script>
+  <script src="/script.js"></script>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="/ass/daniel.png">
+  <meta property="og:title" content="im freaknogging it">
+  <meta property="og:description" content="the blog">
+  <meta property="og:image" content="/ass/daniel.png">
+  <meta property="og:image:type" content="image/png">
+</head>
+
+<body>
+  <h1>freaknog supreme</h1><br>
+  <a href="/index.html">back</a><br><br>
+
+  <a href="/blog/rss.xml">rss feed <img src="/ass/rss.png" width="20"></a>
+  <br><br>
+  <div id="feed"></div>
+</body>
+
+</html>

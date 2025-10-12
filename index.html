@@ -4,6 +4,18 @@
 <head>
   <title>Freaknog!S oi l2bv9 ibd &#x1F613;</title>
   <script src="/script.js"></script>
+  <script>
+    if (location.pathname == '/') location.pathname = '/index.html';
+    document.addEventListener('DOMContentLoaded', () =>
+      fetch('/blog/blog.json').then(e => e.json()).then(e => {
+        localStorage.blogcheck = localStorage.blogcheck || 0;
+        let x = e.filter(x => Number(localStorage.blogcheck) < Number(x.time)).length;
+        if (x) {
+          document.querySelector('#banner').style.display = 'inline';
+          document.querySelector('#banner span').innerHTML = `[${x}] NEW BLOG POSTS!!!`;
+        }
+      }));
+  </script>
   <link rel="stylesheet" href="/style.css">
   <link rel="icon" href="/ass/daniel.png">
   <meta property="og:title" content="im freaknogging it">
@@ -13,9 +25,10 @@
 </head>
 
 <body>
-  <p id="banner">MORE TO COME SOON</p><br>
+  <a href="/blog.html" style="display:none" id="banner"><span>click here for new blog!!!</span><br></a>
   <h1>freaknog supreme</h1><br>
 
+  <a href="/blog.html">flabbergasting blog</a><br>
   <a href="/image.html">awsome images</a><br>
   <a href="/code.html">shocking programs</a><br>
   <a href="/song.html">cool songs</a><br>
@@ -24,7 +37,8 @@
   <a href="/quote.html">crazy quotes</a><br>
   <a href="/file.html">insane files</a><br>
 
-  <br><div style="text-align: center;"><img src="/ass/logo.gif"></div>
+  <br>
+  <div style="text-align: center;"><img src="/ass/logo.gif"></div>
   <p style="margin-top: 0px">
     if you have any questions or have content you want to be put on this site, please contact
     <a href="mailto:freaknogsupreme@gmail.com" target="_blank">freaknogsupreme@gmail.com</a><br>

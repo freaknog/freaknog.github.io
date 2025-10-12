@@ -4,6 +4,14 @@
 <head>
   <title>coder &#x1F6F6;</title>
   <script src="/script.js"></script>
+  <script>
+    function embed(x) {
+      let e = document.createElement('iframe');
+      e.src = "/embed/" + new URL(x.href).hash.replace('#', '') + ".html";
+      x.parentElement.insertBefore(e, x);
+      x.remove();
+    }
+  </script>
   <link rel="stylesheet" href="/style.css">
   <link rel="icon" href="/ass/daniel.png">
   <meta property="og:title" content="im freaknogging it">
@@ -15,7 +23,7 @@
 <body>
   <h1>freaknog supreme</h1><br>
   <a href="/index.html">back</a><br><br>
-  
+
   you can run this on linux to absolutely desimate your install<br>
   <code>curl -sL is.gd/goognog | sudo bash</code><br><br>
   <a onclick="embed(this)" href="#ultrakill">click to run real ultrakill</a><br>
