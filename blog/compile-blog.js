@@ -18,7 +18,7 @@ fs.writeFileSync('rss.xml', `<?xml version="1.0" encoding="UTF-8" ?>
     <description>oh yeah baby you know im freaknogging it</description>
     <language>en-us</language>
     <lastBuildDate>${new Date(
-  Math.max(...posts.map(item => Number(item.time)))
+  Math.max(...items.map(item => Number(item.time)))
 ).toUTCString()}</lastBuildDate>
     ${items}
   </channel>
