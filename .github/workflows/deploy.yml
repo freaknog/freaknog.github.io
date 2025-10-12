@@ -26,7 +26,7 @@ jobs:
       - name: compile blog
         run: |
           cd blog
-          node compile-blog ${{ secrets.URL }}
+          node compile-blog ${{ vars.URL }}
 
       - name: upload artifact
         uses: actions/upload-pages-artifact@v3
