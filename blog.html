@@ -6,17 +6,16 @@
   <script>
     localStorage.blogcheck = Date.now();
     document.addEventListener('DOMContentLoaded', () => fetch('/blog/blog.json').then(e => e.json()).then(e => {
-      if (location.hash) e = e.filter(x => location.hash == '#' + x.id);
       document.querySelector('#feed').innerHTML =
         e.sort((a, b) => Number(b.time) - Number(a.time)).map(x =>
-          `<details><summary>${x.title}
+          `<details${location.hash == '#' + x.id ? " open" : ""}><summary>${x.title}
         <img src="/ass/link.png" width="30" onclick="c('${x.id}', this)" class="link">
         <div class="tiny">${new Date(Number(x.time)).toString()
             .replace(/^... /, '').replace(/ GMT.*$/, '')}</div>
       </summary>
         <div>${x.content}</div>
       </details>`).join('');
-      if (location.hash) document.querySelector('details').open = true;
+      if (location.hash) document.querySelector('details[open]').scrollIntoView();
     }));
 
     function c(x, e) {
